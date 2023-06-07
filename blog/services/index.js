@@ -277,6 +277,20 @@ export const getRecentPosts = async (categories) => {
   return result.posts;
 };
 
-
-
+/* This is all for the admin page going forwards */
+export const getTotalComments = async () => {
+  const query = gql`
+    query GetTotalComments {
+      commentsConnection {
+        aggregate {
+          count
+        }
+      }
+    }
+  `;
+  
+  const result = await request(graphqlAPI, query);
+  const totalCount = result.commentsConnection.aggregate.count;
+  return totalCount
+};
 
