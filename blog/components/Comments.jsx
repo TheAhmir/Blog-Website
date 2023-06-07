@@ -12,7 +12,6 @@ const Comments = ({ slug }) => {
     getComments(slug)
       .then((result) => setComments(result))
   }, [])
-  
 
   return (
     <>

@@ -221,7 +221,7 @@ export const submitComment = async (obj) => {
 export const getComments = async (slug) => {
   const query = gql`
     query GetComments($slug:String!) {
-      comments(where: {post: {slug:$slug}}){
+      comments(where: {post: {slug:$slug}}, orderBy: createdAt_DESC){
         name
         createdAt
         comment
@@ -277,20 +277,6 @@ export const getRecentPosts = async (categories) => {
   return result.posts;
 };
 
-export const getUnpublishedComments = async () => {
-  const query = gql`
-    query getUnpublishedComments {
-      comments{
-        name
-        createdAt
-        comment
-      }
-    }
-  `
 
-  const result = await request(graphqlAPI, query);
-
-  return result.comments;
-}
 
 
