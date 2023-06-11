@@ -7,7 +7,7 @@ const QuillEditor = dynamic(() => import('../../components/QuillEditor'), { ssr:
 
 import 'react-quill/dist/quill.snow.css';
 
-export const Worker = ({ picked }) => {
+const Worker = ({ picked }) => {
   const [image, setImage] = useState(null);
   const title = useRef();
   const [body, setBody] = useState('');
@@ -138,3 +138,5 @@ export const Worker = ({ picked }) => {
     )
   );
 };
+
+export default Worker
