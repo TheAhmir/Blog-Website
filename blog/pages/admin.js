@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getPosts, getTotalComments } from '@/services';
 import { TbSquareRoundedPlusFilled } from 'react-icons/tb';
-import { Worker } from './admin_helper/Worker';
+import Worker from './admin_helper/Worker';
 
 const Admin = () => {
   const [numPosts, setNumPosts] = useState(0);
