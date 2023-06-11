@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-
 import { getCategories, getCategoryPost } from '../../services';
 import { PostCard, Categories, PostWidget, Loader } from '../../components';
 
 const CategoryPost = ({ posts }) => {
-  const category = posts[0]?.node?.categories[0];
-
+  const [category, setCategory] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    const url = window.location.pathname;
+    const stringAfterLastSlash = url.split('/');
+    const categorySlug = stringAfterLastSlash[stringAfterLastSlash.length - 1];
+    setCategory(categorySlug);
+  }, []);
 
   if (router.isFallback) {
     return <Loader />;
@@ -47,7 +52,6 @@ export async function getStaticProps({ params }) {
 // The HTML is generated at build time and will be reused on each request.
 export async function getStaticPaths() {
   const categories = await getCategories();
-  {console.log(categories)}
   return {
     paths: categories.map(({ slug }) => ({ params: { slug } })),
     fallback: true,

@@ -294,3 +294,16 @@ export const getTotalComments = async () => {
   return totalCount
 };
 
+
+export const submitImage = async (image) => {
+  const formData = new FormData();
+  formData.append('image', image);
+
+  const result = await fetch('/api/image', {
+    method: 'POST',
+    body: formData,
+  });
+
+  return result.json();
+};
+
