@@ -18,7 +18,7 @@ const Header = () => {
             <div className='md:float-left block'>
                 <Link href='/'>
                     <span className={!isSlugAdmin ? 'cursor-pointer font-bold text-4xl text-white' : 'cursor-pointer font-bold text-4xl text-black'}>
-                        A Blogger's Blog
+                        Graeme's Blog
                     </span>
                 </Link>
             </div>

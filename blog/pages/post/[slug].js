@@ -7,6 +7,10 @@ import { PostDetail, Categories, Author, Comments, CommentsForm, PostWidget, Loa
 
 const PostDetails = ({ post }) => {
   const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
   const [showComponents, setShowComponents] = useState(false);
 
   useEffect(() => {
@@ -18,10 +22,6 @@ const PostDetails = ({ post }) => {
       clearTimeout(timeout);
     };
   }, []);
-
-  if (router.isFallback) {
-    return <Loader />;
-  }
 
   return (
     <div className='container mx-auto px-10 mb-8'>
