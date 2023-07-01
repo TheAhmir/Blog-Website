@@ -11,8 +11,18 @@ const Categories = ({ currentCategory }) => {
   };
 
   useEffect(() => {
-    getCategories().then((newCategories) => setCategories(newCategories));
-  }, []);
+    getCategories().then((newCategories) => {
+      setCategories(newCategories);
+      setCurCat(currentCategory); // Set the current category after data is loaded
+    });
+  }, [currentCategory]); // Only re-run the effect if currentCategory changes
+
+  useEffect(() => {
+    // Set the current category color to red after the page is completely loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      setCurCat(currentCategory);
+    });
+  }, [currentCategory]); // Only re-run the effect if currentCategory changes
 
   return (
     <div className='bg-white shadow-lg rounded-lg p-8 mb-8 pb-12'>
