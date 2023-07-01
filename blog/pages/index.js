@@ -39,9 +39,10 @@ export async function getStaticProps() {
 }
 
 export async function getStaticPaths() {
-  const categories = await getCategories();
+  const posts = await getPosts();
+
   return {
-    paths: categories.map(({ slug }) => ({ params: { slug } })),
+    paths: [],
     fallback: true,
   };
 }
